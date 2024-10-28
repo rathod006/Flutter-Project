@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -174,6 +173,7 @@ class TextInputForm extends StatelessWidget {
                       ),
                     ),
                   ),
+                  SizedBox(height: 4),
                   Text(
                     'Umur',
                     style: TextStyle(
@@ -210,6 +210,7 @@ class TextInputForm extends StatelessWidget {
                       ),
                     ),
                   ),
+                  SizedBox(height: 4),
                   Text(
                     'Berat (kg)',
                     style: TextStyle(
@@ -246,6 +247,7 @@ class TextInputForm extends StatelessWidget {
                       ),
                     ),
                   ),
+                  SizedBox(height: 4),
                   Text(
                     'Tinggi (cm)',
                     style: TextStyle(
