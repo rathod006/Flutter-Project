@@ -95,134 +95,119 @@ class ResultScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 21),
-                  Column(
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Container(
                         margin: const EdgeInsets.only(left: 43),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Text(
-                              '< 18.5',
-                              style: TextStyle(
-                                  fontFamily: 'Abel',
-                                  fontSize: 20,
-                                  color: Colors.white
-                              ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text(
+                                  '< 18,5',
+                                  style: TextStyle(
+                                      fontFamily: 'Abel',
+                                      fontSize: 20,
+                                      color: Colors.white
+                                  ),
+                                ),
+                                SizedBox(height: 17),
+                                Text(
+                                  '18,5 - 22,9',
+                                  style: TextStyle(
+                                      fontFamily: 'Abel',
+                                      fontSize: 20,
+                                      color: Colors.white
+                                  ),
+                                ),
+                                SizedBox(height: 17),
+                                Text(
+                                  '23 - 24,9',
+                                  style: TextStyle(
+                                      fontFamily: 'Abel',
+                                      fontSize: 20,
+                                      color: Colors.white
+                                  ),
+                                ),
+                                SizedBox(height: 17),
+                                Text(
+                                  '25',
+                                  style: TextStyle(
+                                      fontFamily: 'Abel',
+                                      fontSize: 20,
+                                      color: Colors.white
+                                  ),
+                                ),
+                                SizedBox(height: 35)
+
+                              ],
                             ),
-                            SizedBox(width: 69),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(left: 69),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
                             Text(
                               'Dibawah Normal',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontFamily: 'Abel',
-                                  fontSize: 20,
-                                  color: Colors.white
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      Divider(
-                        color: Color(0xFF172747),
-                        thickness: 1,
-                        indent: 21,
-                        endIndent: 21,
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(left: 43),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            Text(
-                              '18.5 - 22.9',
                               style: TextStyle(
                                   fontFamily: 'Abel',
                                   fontSize: 20,
                                   color: Colors.white
                               ),
                             ),
-                            SizedBox(width: 69),
+                            SizedBox(height: 17),
                             Text(
                               'Normal',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontFamily: 'Abel',
-                                  fontSize: 20,
-                                  color: Colors.white
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      Divider(
-                        color: Color(0xFF172747),
-                        thickness: 1,
-                        indent: 21,
-                        endIndent: 21,
-                      ),
-                      Container(
-                        // margin: const EdgeInsets.only(left: 43),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            Text(
-                              '23 - 24.9',
                               style: TextStyle(
                                   fontFamily: 'Abel',
                                   fontSize: 20,
                                   color: Colors.white
                               ),
                             ),
+                            SizedBox(height: 17),
                             Text(
                               'Berlebih',
-                              textAlign: TextAlign.start,
-                              style: TextStyle(
-                                  fontFamily: 'Abel',
-                                  fontSize: 20,
-                                  color: Colors.white
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      Divider(
-                        color: Color(0xFF172747),
-                        thickness: 1,
-                        indent: 21,
-                        endIndent: 21,
-                      ),
-                      Container(
-                        // margin: const EdgeInsets.only(left: 43),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            Text(
-                              '25 <=',
                               style: TextStyle(
                                   fontFamily: 'Abel',
                                   fontSize: 20,
                                   color: Colors.white
                               ),
                             ),
+                            SizedBox(height: 17),
                             Text(
                               'Obesitas',
-                              textAlign: TextAlign.start,
                               style: TextStyle(
                                   fontFamily: 'Abel',
                                   fontSize: 20,
                                   color: Colors.white
                               ),
-                            )
+                            ),
+                            SizedBox(height: 32)
+
                           ],
                         ),
-                      ),
+                      )
                     ],
-                  )
+                  ),
+                  SizedBox(height: 6),
+                  Container(
+                    margin: const EdgeInsets.only(left: 26),
+                    child: Text(
+                        '*Kategori yang digunakan adalah kategori untuk orang Asia',
+                      style: TextStyle(
+                        fontFamily: 'Manrope',
+                        color: Colors.white,
+                        fontSize: 10
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 17)
                 ],
               ),
             )
