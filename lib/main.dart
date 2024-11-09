@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/home_screen.dart';
 import 'package:bmi_calculator/result_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Kalkulator BMI',
       theme: ThemeData(),
-      home: const ResultScreen()
+      home: const HomeScreen()
     );
   }
 }

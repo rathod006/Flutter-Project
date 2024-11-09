@@ -1,4 +1,12 @@
+import 'dart:math';
+
+import 'package:bmi_calculator/result_screen.dart';
 import 'package:flutter/material.dart';
+
+
+TextEditingController ageController = TextEditingController();
+TextEditingController weightController = TextEditingController();
+TextEditingController heightController = TextEditingController();
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -62,7 +70,12 @@ class HomeScreen extends StatelessWidget {
                               margin: const EdgeInsets.symmetric(horizontal: 16.0),
                               child: ElevatedButton(
                                 onPressed: () {
-
+                                  double weight = double.parse(weightController.text);
+                                  double height = double.parse(heightController.text)/100;
+                                  double result = weight / pow(height, 2);
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                    return ResultScreen(result: result);
+                                  }));
                                 },
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor: Color(0xff1D3461)
@@ -89,7 +102,7 @@ class HomeScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
-                      SizedBox(height: 12),
+                      SizedBox(height: 4),
                       Card(
                         margin: const EdgeInsets.symmetric(horizontal: 16.0),
                         color: Color(0xFF1F487E),
@@ -155,12 +168,13 @@ class TextInputForm extends StatelessWidget {
                   Container(
                     width: 100,
                     height: 62,
-                    padding: const EdgeInsets.only(bottom: 6),
+                    padding: const EdgeInsets.only(bottom: 10),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
                         color: Color(0xFF1d3461)
                     ),
                     child: TextField(
+                      controller: ageController,
                       textAlign: TextAlign.center,
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
@@ -168,7 +182,7 @@ class TextInputForm extends StatelessWidget {
                       ),
                       style: TextStyle(
                           fontFamily: 'ManropeBold',
-                          fontSize: 44,
+                          fontSize: 36,
                           color: Colors.white
                       ),
                     ),
@@ -191,12 +205,13 @@ class TextInputForm extends StatelessWidget {
                   Container(
                     width: 100,
                     height: 62,
-                    padding: const EdgeInsets.only(bottom: 6),
+                    padding: const EdgeInsets.only(bottom: 10),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
                         color: Color(0xFF1d3461)
                     ),
                     child: TextField(
+                      controller: weightController,
                       textAlign: TextAlign.center,
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
@@ -205,7 +220,7 @@ class TextInputForm extends StatelessWidget {
                       ),
                       style: TextStyle(
                           fontFamily: 'ManropeBold',
-                          fontSize: 44,
+                          fontSize: 36,
                           color: Colors.white
                       ),
                     ),
@@ -228,12 +243,13 @@ class TextInputForm extends StatelessWidget {
                   Container(
                     width: 100,
                     height: 62,
-                    padding: const EdgeInsets.only(bottom: 6),
+                    padding: const EdgeInsets.only(bottom: 10),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
                         color: Color(0xFF1d3461)
                     ),
                     child: TextField(
+                      controller: heightController,
                       textAlign: TextAlign.center,
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
@@ -242,7 +258,7 @@ class TextInputForm extends StatelessWidget {
                       ),
                       style: TextStyle(
                           fontFamily: 'ManropeBold',
-                          fontSize: 44,
+                          fontSize: 36,
                           color: Colors.white
                       ),
                     ),

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ResultScreen extends StatelessWidget {
-  const ResultScreen ({super.key});
+  final double result;
+
+  const ResultScreen ({super.key, required this.result});
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +51,7 @@ class ResultScreen extends StatelessWidget {
                     ),
                     child: Center(
                       child: Text(
-                        '19.2',
+                        result.toStringAsFixed(1),
                         style: TextStyle(
                           fontFamily: 'ManropeBold',
                           fontSize: 68,
@@ -62,7 +64,7 @@ class ResultScreen extends StatelessWidget {
                   SizedBox(height: 13),
                   Center(
                     child: Text(
-                        'Normal',
+                        bmiCategory(result),
                       style: TextStyle(
                         fontFamily: 'ManropeBold',
                         fontSize: 39,
@@ -207,13 +209,47 @@ class ResultScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 17)
+                  SizedBox(height: 17),
                 ],
               ),
+            ),
+            SizedBox(height: 16),
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 16),
+                child: ElevatedButton(onPressed: () {
+                  Navigator.pop(context);
+                },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xff1D3461)
+                  ),
+                  child: Text(
+                    'Hitung Lagi',
+                    style: TextStyle(
+                        fontFamily: 'ManropeBold',
+                        fontSize: 20,
+                        color: Colors.white
+                    ),
+                  ),
+                )
             )
           ],
         ),
       ),
     );
   }
+}
+
+String bmiCategory(index) {
+  if (index < 18.5) {
+    return 'Dibawah Normal';
+  } else
+    if (index >= 18.5 && index <= 22.9) {
+      return 'Normal';
+    } else
+      if(index >= 23 && index <= 24.9) {
+        return 'Berlebih';
+      } else {
+        return 'Obesitas';
+      }
+
 }
