@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "386452447358",
+    "project_id": "flutter-bmi123",
+    "storage_bucket": "flutter-bmi123.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:386452447358:android:5d401cdabb428c709bb82f",
+        "android_client_info": {
+          "package_name": "com.example.flutter_bmi_calculator"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2x8yJLMZbAXJX2jL0ItOudWTWdkjbsHs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

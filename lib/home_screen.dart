@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:bmi_calculator/result_screen.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 
@@ -8,16 +9,23 @@ TextEditingController ageController = TextEditingController();
 TextEditingController weightController = TextEditingController();
 TextEditingController heightController = TextEditingController();
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  var db = FirebaseFirestore.instance;
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Color(0xFF376996),
         appBar: AppBar(
           title: Text(
-            'Kalkulator BMI',
+            'BMI Calculator',
             style: TextStyle(
                 fontFamily: 'ManropeBold', fontSize: 32, color: Colors.white),
           ),
@@ -41,7 +49,7 @@ class HomeScreen extends StatelessWidget {
                         margin: const EdgeInsets.only(left: 21.9),
                         child: Text(
                           textAlign: TextAlign.left,
-                          'Jenis Kelamin',
+                          'Gender',
                           style: TextStyle(
                               fontFamily: 'ManropeBold',
                               fontSize: 20,
@@ -73,6 +81,13 @@ class HomeScreen extends StatelessWidget {
                                   double weight = double.parse(weightController.text);
                                   double height = double.parse(heightController.text)/100;
                                   double result = weight / pow(height, 2);
+                                   final user = <String, dynamic>{
+                    "height": height,
+                    "weight": weight,
+                    "bmi": result
+                  };
+                  db.collection("bmis").add(user);
+
                                   Navigator.push(context, MaterialPageRoute(builder: (context) {
                                     return ResultScreen(result: result);
                                   }));
@@ -81,7 +96,7 @@ class HomeScreen extends StatelessWidget {
                                     backgroundColor: Color(0xff1D3461)
                                 ),
                                 child: Text(
-                                  'Hitung Index',
+                                  'Calculate',
                                   style: TextStyle(
                                       fontFamily: 'ManropeBold',
                                       fontSize: 20,
@@ -113,7 +128,7 @@ class HomeScreen extends StatelessWidget {
                             Container(
                               margin: const EdgeInsets.only(left: 16.0),
                               child: Text(
-                                'Apa itu BMI?',
+                                'What is BMI?',
                                 style: TextStyle(
                                     fontFamily: 'ManropeBold',
                                     fontSize: 24,
@@ -125,7 +140,7 @@ class HomeScreen extends StatelessWidget {
                             Container(
                               margin: const EdgeInsets.only(left: 16.0, right: 16.61),
                               child: Text(
-                                'Body Mass Indexing atau BMI adalah suatu metode pengukuran yang digunakan untuk menentukan kategori berat badan ideal seseorang. Metode perhitungan ini awalnya dikembangkan pada abad 19 oleh Adolphe Quetelet. Adapun istilah lain dalam menyebut BMI adalah indeks massa tubuh (IMT).'
+                                'Body Mass Indexing or BMI is a measurement method used to determine a persons ideal weight category. This calculation method was originally developed in the 19th century by Adolphe Quetelet. Another term for referring to BMI is body mass index (BMI).'
                                 ,
                                 style: TextStyle(
                                     fontFamily: 'Abel',
@@ -189,7 +204,7 @@ class TextInputForm extends StatelessWidget {
                   ),
                   SizedBox(height: 4),
                   Text(
-                    'Umur',
+                    'Age',
                     style: TextStyle(
                         fontFamily: 'ManropeBold',
                         fontSize: 16,
@@ -227,7 +242,7 @@ class TextInputForm extends StatelessWidget {
                   ),
                   SizedBox(height: 4),
                   Text(
-                    'Berat (kg)',
+                    'Weight (kg)',
                     style: TextStyle(
                         fontFamily: 'ManropeBold',
                         fontSize: 16,
@@ -265,7 +280,7 @@ class TextInputForm extends StatelessWidget {
                   ),
                   SizedBox(height: 4),
                   Text(
-                    'Tinggi (cm)',
+                    'height (cm)',
                     style: TextStyle(
                         fontFamily: 'ManropeBold',
                         fontSize: 16,
@@ -283,7 +298,7 @@ class TextInputForm extends StatelessWidget {
 }
 
 
-enum Gender { pria, wanita }
+enum Gender { male, female }
 
 class GenderSelectButton extends StatefulWidget {
   const GenderSelectButton({super.key});
@@ -293,7 +308,7 @@ class GenderSelectButton extends StatefulWidget {
 }
 
 class _GenderSelectState extends State<GenderSelectButton> {
-  Gender? _gender = Gender.pria;
+  Gender? _gender = Gender.male;
 
   @override
   Widget build(BuildContext context) {
@@ -310,12 +325,12 @@ class _GenderSelectState extends State<GenderSelectButton> {
           child: Center(
             child: ListTile(
               title: const Text(
-                'Pria',
+                'male',
                 style: TextStyle(
                     fontFamily: 'Abel', fontSize: 25, color: Colors.white),
               ),
               leading: Radio<Gender>(
-                value: Gender.pria,
+                value: Gender.male,
                 groupValue: _gender,
                 onChanged: (Gender? value) {
                   setState(() {
@@ -334,11 +349,11 @@ class _GenderSelectState extends State<GenderSelectButton> {
               color: Color(0xFF1d3461),
               borderRadius: BorderRadius.circular(15)),
           child: ListTile(
-            title: const Text('Wanita',
+            title: const Text('female',
                 style: TextStyle(
                     fontFamily: 'Abel', fontSize: 25, color: Colors.white)),
             leading: Radio<Gender>(
-              value: Gender.wanita,
+              value: Gender.female,
               groupValue: _gender,
               onChanged: (Gender? value) {
                 setState(() {

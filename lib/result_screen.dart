@@ -10,7 +10,7 @@ class ResultScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Kalkulator BMI',
+          'BMI Calculator',
           style: TextStyle(
               fontFamily: 'ManropeBold', fontSize: 32, color: Colors.white),
         ),
@@ -33,7 +33,7 @@ class ResultScreen extends StatelessWidget {
                 children: <Widget>[
                   SizedBox(height: 16),
                   Text(
-                      'Indeks BMI kamu adalah',
+                      'Your BMI Index Value is',
                     style: TextStyle(
                       fontFamily: 'Manrope',
                       fontWeight: FontWeight.w300,
@@ -87,7 +87,7 @@ class ResultScreen extends StatelessWidget {
                   Container(
                     margin: const EdgeInsets.only(left: 31),
                     child: Text(
-                        'Kategori Indeks BMI*',
+                        'BMI Index Category*',
                       style: TextStyle(
                         fontFamily: 'ManropeBold',
                         fontSize: 20,
@@ -156,7 +156,7 @@ class ResultScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text(
-                              'Dibawah Normal',
+                              'Below Normal',
                               style: TextStyle(
                                   fontFamily: 'Abel',
                                   fontSize: 20,
@@ -174,7 +174,7 @@ class ResultScreen extends StatelessWidget {
                             ),
                             SizedBox(height: 17),
                             Text(
-                              'Berlebih',
+                              'Excess',
                               style: TextStyle(
                                   fontFamily: 'Abel',
                                   fontSize: 20,
@@ -183,7 +183,7 @@ class ResultScreen extends StatelessWidget {
                             ),
                             SizedBox(height: 17),
                             Text(
-                              'Obesitas',
+                              'Obesity',
                               style: TextStyle(
                                   fontFamily: 'Abel',
                                   fontSize: 20,
@@ -201,7 +201,7 @@ class ResultScreen extends StatelessWidget {
                   Container(
                     margin: const EdgeInsets.only(left: 26),
                     child: Text(
-                        '*Kategori yang digunakan adalah kategori untuk orang Asia',
+                        '*The Category used is only for Indian People',
                       style: TextStyle(
                         fontFamily: 'Manrope',
                         color: Colors.white,
@@ -223,7 +223,7 @@ class ResultScreen extends StatelessWidget {
                       backgroundColor: Color(0xff1D3461)
                   ),
                   child: Text(
-                    'Hitung Lagi',
+                    'Count Again',
                     style: TextStyle(
                         fontFamily: 'ManropeBold',
                         fontSize: 20,
@@ -241,15 +241,15 @@ class ResultScreen extends StatelessWidget {
 
 String bmiCategory(index) {
   if (index < 18.5) {
-    return 'Dibawah Normal';
+    return 'Below Normal';
   } else
     if (index >= 18.5 && index <= 22.9) {
       return 'Normal';
     } else
       if(index >= 23 && index <= 24.9) {
-        return 'Berlebih';
+        return 'Excess';
       } else {
-        return 'Obesitas';
+        return 'Obesity';
       }
 
 }
